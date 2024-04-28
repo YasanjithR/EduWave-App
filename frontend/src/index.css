@@ -1,0 +1,16 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+body{
+  background-image: url("../src/assets/bg-main.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.courseCard{
+
+  float: left;
+  
+}
