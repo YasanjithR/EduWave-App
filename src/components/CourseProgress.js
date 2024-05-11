@@ -10,7 +10,7 @@ const CourseProgressTracker = () => {
         <h2 className="text-lg font-semibold mb-4">Overall Progress</h2>
         <div className="flex justify-between">
           <div className="w-1/2 pr-4 border-r border-gray-300">
-            <h3 className="text-lg font-semibold mb-2">Linear Progress</h3>
+            <h3 className="text-lg font-semibold mb-2">Course Progress</h3>
             <div className="flex items-center mb-4">
               <div className="w-full">
                 <LinearProgress
@@ -23,7 +23,7 @@ const CourseProgressTracker = () => {
             </div>
           </div>
           <div className="w-1/2 pl-4">
-            <h3 className="text-lg font-semibold mb-2">Circular Progress</h3>
+            <h3 className="text-lg font-semibold mb-2">Exams Progress</h3>
             <div className="flex items-center justify-center mb-4">
               <div style={{ width: '150px', height: '150px' }}>
                 <CircularProgressbar

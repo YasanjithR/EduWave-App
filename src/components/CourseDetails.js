@@ -4,6 +4,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const CourseDetailComponent = () => {
+  const course = {
+    title: "JavaScript Basics",
+    description: "This course is designed to introduce you to the basics of JavaScript, the most popular programming language in web development. You'll learn about variables, data types, functions, control structures, and more. By the end of this course, you'll have a solid foundation in JavaScript and be ready to move on to more advanced topics.",
+    images: [
+      "https://miro.medium.com/max/1838/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+      "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+      "https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_960_720.png"
+    ]
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -35,27 +45,17 @@ const CourseDetailComponent = () => {
   return (
     <div className="container mx-auto p-5 bg-white rounded-xl shadow-md">
       <div className="p-5">
-        <h2 className="text-xl font-bold mb-4">Course Title</h2>
-        <p className="text-gray-700 mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-          feugiat magna, at placerat dui. Pellentesque habitant morbi
-          tristique senectus et netus et malesuada fames ac turpis egestas.
-          Vivamus nec vehicula ipsum.
-        </p>
+        <h2 className="text-xl font-bold mb-4">{course.title}</h2>
+        <p className="text-gray-700 mb-4">{course.description}</p>
       </div>
       <div className="border-t border-gray-200 p-5">
         {/* Slider for course lecture videos */}
         <Slider {...settings}>
-          <div className="px-4">
-            <img src="https://via.placeholder.com/150x100" alt="Video 1" className="w-full rounded-lg" />
-          </div>
-          <div className="px-4">
-            <img src="https://via.placeholder.com/150x100" alt="Video 2" className="w-full rounded-lg" />
-          </div>
-          <div className="px-4">
-            <img src="https://via.placeholder.com/150x100" alt="Video 3" className="w-full rounded-lg" />
-          </div>
-          {/* Add more slides as needed */}
+          {course.images.map((image, index) => (
+            <div key={index} className="px-4">
+              <img src={image} alt={`Slide ${index + 1}`} className="w-full rounded-lg" />
+            </div>
+          ))}
         </Slider>
       </div>
       <div className="flex justify-center p-5">
