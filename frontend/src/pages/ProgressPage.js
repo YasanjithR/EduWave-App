@@ -1,14 +1,15 @@
-import PaymentForm from "../components/Payment"
-import SideNavigationStudent from "../components/SideNavStudent"
 
-const PaymentPage =()=>{
+import SideNavigationStudent from "../components/SideNavStudent"
+import CourseProgressTracker from "../components/CourseProgress"
+
+const CourseProgressTrackerPage =()=>{
 
     return (
         <div className="flex">
         <SideNavigationStudent/>
         <div className="flex-1 mx-3"> 
-        <PaymentForm/>
-   
+       
+        <CourseProgressTracker/>
       </div>
   
         
@@ -16,4 +17,4 @@ const PaymentPage =()=>{
     )
 }
 
-export default PaymentPage
+export default CourseProgressTrackerPage

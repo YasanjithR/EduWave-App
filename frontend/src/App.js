@@ -7,6 +7,7 @@ import ApproveCourseTablePage from './pages/ApproveCourseTablePage';
 import EnrolledCoursesPage from './pages/EnrolledCourses';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import PaymentPage from './pages/PaymentPage';
+import CourseProgressTrackerPage from './pages/ProgressPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/enrolled" element ={<EnrolledCoursesPage/>}/>
             <Route path="/CourseDetails" element ={<CourseDetailsPage/>}/>
             <Route path="/payment" element ={<PaymentPage/>}/>
+            <Route path="/progress" element ={<CourseProgressTrackerPage/>}/>
             
 
 

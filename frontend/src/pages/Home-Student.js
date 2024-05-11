@@ -6,7 +6,7 @@ const HomeStudent =()=>{
     return (
         <div className="flex">
         <SideNavigationStudent/>
-        <div className="flex-1 mx-auto"> {/* Main content */}
+        <div className="flex-1 mx-3">
        
         <CourseCard/>
       </div>

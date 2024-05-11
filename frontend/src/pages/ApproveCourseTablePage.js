@@ -6,7 +6,7 @@ const ApproveCourseTablePage =()=>{
     return (
         <div className="flex">
         <SideNavigationAdmin/>
-        <div className="flex-1 mx-auto"> 
+        <div className="flex-1 mx-3"> 
        
         <ApproveCourseTable/>
       </div>

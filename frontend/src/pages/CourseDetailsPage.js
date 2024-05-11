@@ -7,7 +7,7 @@ const CourseDetailsPage =()=>{
     return (
         <div className="flex">
         <SideNavigationStudent/>
-        <div className="flex-1 mx-auto"> 
+        <div className="flex-1 mx-3"> 
        
         <CourseDetailComponent/>
       </div>
