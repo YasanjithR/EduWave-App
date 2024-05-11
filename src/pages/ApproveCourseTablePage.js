@@ -1,8 +1,9 @@
+import useAuth from "../hooks/auth/useAuth"
 import ApproveCourseTable from "../components/ApproveCourseTable"
 import SideNavigationAdmin from "../components/SideNavAdmin"
 
 const ApproveCourseTablePage =()=>{
-
+    useAuth()
     return (
         <div className="flex">
         <SideNavigationAdmin/>

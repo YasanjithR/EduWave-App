@@ -24,6 +24,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 
 import useUserRegistration from '../hooks/userRegistration/useUserRegistration';
+import useAuthRedirect from '../hooks/auth/useAuthRedirect';
 
 function Copyright(props) {
     return (
@@ -39,6 +40,7 @@ function Copyright(props) {
 }
 
 export default function SignUp() {
+    useAuthRedirect();
     const [role, setRole] = React.useState('');
     const { open, setOpen, executeCmsUserRegister, executeLearnerRegister } = useUserRegistration(null);
 
