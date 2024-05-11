@@ -11,9 +11,9 @@ const SideNavigationAdmin = () => {
       {/* Navigation links */}
       <div className="flex-1">
         <ul className="py-4">
-          <li className="px-6 py-2 hover:bg-gray-700">Link 1</li>
-          <li className="px-6 py-2 hover:bg-gray-700">Link 2</li>
-          <li className="px-6 py-2 hover:bg-gray-700">Link 3</li>
+          <li className="px-6 py-2 hover:bg-gray-700">Review Content</li>
+          <li className="px-6 py-2 hover:bg-gray-700">Course Review</li>
+          <li className="px-6 py-2 hover:bg-gray-700">Notification Centre</li>
         </ul>
       </div>
     </div>

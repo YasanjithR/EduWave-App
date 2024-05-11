@@ -11,9 +11,9 @@ const SideNavigationStudent = () => {
       {/* Navigation links */}
       <div className="flex-1">
         <ul className="py-4">
-          <li className="px-6 py-2 hover:bg-gray-700">Link 1</li>
-          <li className="px-6 py-2 hover:bg-gray-700">Link 2</li>
-          <li className="px-6 py-2 hover:bg-gray-700">Link 3</li>
+          <li className="px-6 py-2 hover:bg-gray-700">My Course</li>
+          <li className="px-6 py-2 hover:bg-gray-700">All Course</li>
+          <li className="px-6 py-2 hover:bg-gray-700">Progress</li>
         </ul>
       </div>
     </div>
