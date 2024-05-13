@@ -1,14 +1,14 @@
 import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
 import HomeStudent from './pages/Home-Student';
-import ApproveCourseTablePage from './pages/ApproveCourseTablePage';
+import AdminHome from './pages/admin/AdminHome';
+import InstructorHome from './pages/instructor/InstructorHome';
 import EnrolledCoursesPage from './pages/EnrolledCourses';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import PaymentPage from './pages/PaymentPage';
 import CourseProgressTrackerPage from './pages/ProgressPage';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import SignIn from './pages/auth/SignIn';
+import SignUp from './pages/auth/SignUp';
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
             <Route path="/" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/home-student" element={<HomeStudent />} />
-            <Route path="/home-admin" element={<ApproveCourseTablePage />} />
+            <Route path="/home-admin" element={<AdminHome />} />
+            <Route path="/home-instructor" element={<InstructorHome />} />
             <Route path="/enrolled" element={<EnrolledCoursesPage />} />
             <Route path="/CourseDetails" element={<CourseDetailsPage />} />
             <Route path="/payment" element={<PaymentPage />} />

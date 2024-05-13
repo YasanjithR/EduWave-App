@@ -23,8 +23,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 
-import useUserRegistration from '../hooks/userRegistration/useUserRegistration';
-import useAuthRedirect from '../hooks/auth/useAuthRedirect';
+import useUserRegistration from '../../hooks/userRegistration/useUserRegistration';
+import useAuthRedirect from '../../hooks/auth/useAuthRedirect';
 
 function Copyright(props) {
     return (

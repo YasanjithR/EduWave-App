@@ -23,9 +23,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 
-import bgmain from '../assets/bg-main.jpg';
-import useUserLogin from '../hooks/userLogin/useUserLogin';
-import useAuthRedirect from '../hooks/auth/useAuthRedirect';
+import bgmain from '../../assets/bg-main.jpg';
+import useUserLogin from '../../hooks/userLogin/useUserLogin';
+import useAuthRedirect from '../../hooks/auth/useAuthRedirect';
 
 function Copyright(props) {
     return (
@@ -48,7 +48,7 @@ export default function SignIn() {
     const [dialogMessage, setDialogMessage] = React.useState('');
     const { login, error } = useUserLogin();
 
-    const handleRoleChange = (event) => {
+    const handleRoleChange = (event) => { 
         setRole(event.target.value.toLowerCase());
     };
 

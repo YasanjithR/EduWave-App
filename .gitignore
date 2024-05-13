@@ -32,3 +32,4 @@ docs/
 # Ignore any other files or directories specific to your project
 package-lock.json
 yarn.lock
+.env
