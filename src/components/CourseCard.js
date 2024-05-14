@@ -1,65 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link as RouterLink } from 'react-router-dom';
+import useFetchInstructCourses from "../hooks/useInstructorCourses/useFetchInstructCourses";
+import { Card, CardContent, CardMedia, Typography, Button, Collapse, Link, Grid } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLess from "@mui/icons-material/ExpandLess";
 
-const CourseCard = ({ title, content }) => {
+const CourseCard = ({ course }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
-    <div className="max-w-xs bg-white rounded-xl shadow-md overflow-hidden md:max-w-md md:flex md:flex-row md:space-x-4 m-4 w-full sm:w-1/2 lg:w-1/3">
-      <div className="p-4 md:p-8 flex flex-col justify-between mx-4">
-        <div>
-          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-            {title}
-          </div>
-          <p className="mt-2 text-gray-500">{content}</p>
-        </div>
-        <div className="mt-4">
-          <button className="w-full md:w-auto px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
-            Enroll
-          </button>
-        </div>
-      </div>
-    </div>
+    <Card sx={{ maxWidth: 800, m: 4 }}>
+      <CardMedia
+        component="img"
+        height="200"
+        image={course.thumbnail}
+        alt={course.title}
+      />
+      <CardContent>
+        <Typography variant="h5" component="div">
+          {course.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {course.content}
+        </Typography>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Videos:</Typography>
+            {course.videos.map((video, index) => (
+              <Typography paragraph key={index}>{video.title}</Typography>
+            ))}
+            <Typography paragraph>Notes:</Typography>
+            {course.notes.map((note, index) => (
+              <Typography paragraph key={index}>{note.title}</Typography>
+            ))}
+            <Typography paragraph>Quizzes:</Typography>
+            {course.quizzes.map((quiz, index) => (
+              <Typography paragraph key={index}>{quiz.question}</Typography>
+            ))}
+          </CardContent>
+        </Collapse>
+        <Button variant="contained" color="primary" onClick={handleExpandClick} endIcon={expanded ? <ExpandLess /> : <ExpandMoreIcon />}>
+          {expanded ? 'Less' : 'More'}
+        </Button>
+        <Link component={RouterLink} to={`/home-instructor/courses/${course._id}`} underline="none">
+          <Button variant="contained" color="secondary" style={{ marginLeft: '10px' }}>
+            Add Content
+          </Button>
+        </Link>
+      </CardContent>
+    </Card>
   );
 };
 
 const CourseList = () => {
-  const courses = [
-    {
-      title: "JavaScript Basics",
-      content: "Learn the basics of JavaScript, the most popular programming language in web development."
-    },
-    {
-      title: "Advanced JavaScript",
-      content: "Take your JavaScript skills to the next level with topics like async programming, closures, and prototypes."
-    },
-    {
-      title: "JavaScript Frameworks",
-      content: "Learn about JavaScript frameworks like React, Vue, and Angular, and how they can help you build complex web applications."
-    },
-    {
-      title: "Node.js",
-      content: "Learn how to build server-side applications with Node.js, a popular JavaScript runtime."
-    },
-    {
-      title: "Express.js",
-      content: "Learn how to build web servers with Express.js, a popular web framework for Node.js."
-    },
-    {
-      title: "MongoDB",
-      content: "Learn how to work with MongoDB, a popular NoSQL database, and how to integrate it with Node.js."
-    },
-    {
-      title: "Full-Stack Development",
-      content: "Learn how to build full-stack applications with JavaScript, from the front-end to the back-end."
-    }
-  ];
+  const { courses, loading, error } = useFetchInstructCourses();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container mx-auto p-5">
-      <div className="flex flex-wrap p-5">
-        {courses.map((course, index) => (
-          <CourseCard key={index} title={course.title} content={course.content} />
-        ))}
-      </div>
-    </div>
+    <Grid container spacing={4} style={{ padding: '20px' }}>
+      {courses.map((course, index) => (
+        <Grid item xs={12} sm={6} key={index}>
+          <CourseCard course={course} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 

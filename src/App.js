@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomeStudent from './pages/Home-Student';
 import AdminHome from './pages/admin/AdminHome';
 import InstructorHome from './pages/instructor/InstructorHome';
+import InstructorCourses from './pages/instructor/InstructorCourses';
+import InstructorCourseDetailPage from './pages/instructor/InstructorCourseDetailPage';
 import EnrolledCoursesPage from './pages/EnrolledCourses';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import PaymentPage from './pages/PaymentPage';
@@ -22,6 +24,8 @@ function App() {
             <Route path="/home-student" element={<HomeStudent />} />
             <Route path="/home-admin" element={<AdminHome />} />
             <Route path="/home-instructor" element={<InstructorHome />} />
+            <Route path="/home-instructor/courses" element={<InstructorCourses />} />
+            <Route path="/home-instructor/courses/:id" element={<InstructorCourseDetailPage />} />
             <Route path="/enrolled" element={<EnrolledCoursesPage />} />
             <Route path="/CourseDetails" element={<CourseDetailsPage />} />
             <Route path="/payment" element={<PaymentPage />} />
