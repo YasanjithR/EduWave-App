@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Button, Grid, Dialog, DialogTitle, DialogActions } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useEnroll from '../../hooks/useCourse/useEnroll';
+import useEmailNotification from "../../hooks/useNotification/useEmailNotification";
+import useSmsNotification from "../../hooks/useNotification/useSmsNotification";
 
 const CourseDetailsCard = ({ course }) => {
   const { enroll, loading, error } = useEnroll();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
+  const sendEmailNotification = useEmailNotification();
+  const sendSmsNotification = useSmsNotification();
+
   const handleEnroll = async () => {
     const data = await enroll(course._id);
     if (data) {
       setOpen(true);
+      await sendEmailNotification();
+      // await sendSmsNotification();
     }
   };
 
@@ -22,11 +29,11 @@ const CourseDetailsCard = ({ course }) => {
 
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', mb: 2, width: '100%', height: 'auto' }}>
-      <Grid container>
+      <Grid container alignItems="center">
         <Grid item xs={4}>
           <CardMedia
             component="img"
-            sx={{ width: 300 }}
+            sx={{ width: 300, marginLeft: 3, borderRadius: 2 }}
             image={course.thumbnail}
             alt={course.title}
           />

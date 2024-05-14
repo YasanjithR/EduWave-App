@@ -1,5 +1,6 @@
 import * as React from 'react';
 import useLogout from '../../hooks/auth/useLogout';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.png'
 import Box from '@mui/material/Box';
@@ -73,6 +74,8 @@ function AppAppBarLearner() {
                             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 <MenuItem
                                     sx={{ py: '6px', px: '12px' }}
+                                    component={Link}
+                                    to="/home-student/"
                                 >
                                     <Typography variant="body2" color="text.primary">
                                         Home
@@ -80,6 +83,8 @@ function AppAppBarLearner() {
                                 </MenuItem>
                                 <MenuItem
                                     sx={{ py: '6px', px: '12px' }}
+                                    component={Link}
+                                    to="/home-student/courses/"
                                 >
                                     <Typography variant="body2" color="text.primary">
                                         My Courses
@@ -87,6 +92,8 @@ function AppAppBarLearner() {
                                 </MenuItem>
                                 <MenuItem
                                     sx={{ py: '6px', px: '12px' }}
+                                    component={Link}
+                                    to="/home-student/profile/"
                                 >
                                     <Typography variant="body2" color="text.primary">
                                         Profile
@@ -129,13 +136,22 @@ function AppAppBarLearner() {
                                         }}
                                     >
                                     </Box>
-                                    <MenuItem>
+                                    <MenuItem
+                                        component={Link}
+                                        to="/home-student/"
+                                    >
                                         Home
                                     </MenuItem>
-                                    <MenuItem>
+                                    <MenuItem
+                                        component={Link}
+                                        to="/home-student/courses/"
+                                    >
                                         My Courses
                                     </MenuItem>
-                                    <MenuItem>
+                                    <MenuItem
+                                        component={Link}
+                                        to="/home-student/profile/"
+                                    >
                                         Profile
                                     </MenuItem>
                                     <Divider />

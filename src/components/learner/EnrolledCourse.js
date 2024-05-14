@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { Card, CardContent, CardMedia, Typography, Button, Dialog, DialogContent, IconButton } from '@mui/material';
 import { ArrowForwardIos } from '@mui/icons-material';
 import ReactPlayer from 'react-player';
+import useCourseProgress from '../../hooks/useCourse/useCourseProgress';
+import useUpdateCourseProgress from '../../hooks/useCourse/useUpdateCourseProgress';
 
 const EnrolledCourses = ({ course }) => {
     const [open, setOpen] = useState(false);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const progress = useCourseProgress(course._id);
+    const updateCourseProgress = useUpdateCourseProgress(course._id, course.videos.length);
 
     const handleOpen = () => {
         setOpen(true);
@@ -16,7 +20,11 @@ const EnrolledCourses = ({ course }) => {
     };
 
     const handleNextVideo = () => {
-        setCurrentVideoIndex((prevIndex) => prevIndex + 1);
+        setCurrentVideoIndex((prevIndex) => {
+            const newIndex = prevIndex + 1;
+            updateCourseProgress(newIndex);
+            return newIndex;
+        });
     };
 
     return (
@@ -36,6 +44,9 @@ const EnrolledCourses = ({ course }) => {
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ color: 'darkslategray', mt: 2 }}>
                     Instructor: {course.instructor.username}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ color: 'darkslategray', mt: 2 }}>
+                    Progress: {progress}%
                 </Typography>
                 <Button variant="contained" color="primary" onClick={handleOpen} sx={{ mt: 2 }}>
                     View
