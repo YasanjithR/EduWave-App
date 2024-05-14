@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useSubmitCourse from '../../hooks/useCourse/useSubmitCourse';
 import { uploadToS3 } from '../../services/uploadToS3';
 import { TextField, Button, Box, CircularProgress, LinearProgress, Grid, Typography, Card, CardContent, Snackbar, Dialog, DialogTitle, DialogActions } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const AddCourse = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [uploading, setUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [price, setPrice] = useState('');
   const { submitCourse, loading, error } = useSubmitCourse();
 
   const handleFileChange = async (e) => {
@@ -30,7 +33,7 @@ const AddCourse = () => {
     }
 
     const email = localStorage.getItem('email');
-    const course = { title, content, email, thumbnail };
+    const course = { title, content, email, thumbnail, price };
 
     const result = await submitCourse(course);
     if (result) {
@@ -38,6 +41,7 @@ const AddCourse = () => {
       setTitle('');
       setContent('');
       setThumbnail('');
+      navigate('/home-instructor/courses');
     }
   };
 
@@ -68,6 +72,16 @@ const AddCourse = () => {
                   fullWidth
                   multiline
                   rows={4}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Price (in USD)"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  required
+                  fullWidth
+                  type="number"
                 />
               </Grid>
               <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>

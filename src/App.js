@@ -1,11 +1,11 @@
 import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import HomeStudent from './pages/Home-Student';
+import LearnerHome from './pages/learner/LearnerHome';
+import LearnerCourses from './pages/learner/LearnerCourses';
 import AdminHome from './pages/admin/AdminHome';
 import InstructorHome from './pages/instructor/InstructorHome';
 import InstructorCourses from './pages/instructor/InstructorCourses';
 import InstructorCourseDetailPage from './pages/instructor/InstructorCourseDetailPage';
-import EnrolledCoursesPage from './pages/EnrolledCourses';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import PaymentPage from './pages/PaymentPage';
 import CourseProgressTrackerPage from './pages/ProgressPage';
@@ -21,12 +21,12 @@ function App() {
           <Routes>
             <Route path="/" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/home-student" element={<HomeStudent />} />
+            <Route path="/home-student" element={<LearnerHome />} />
+            <Route path="/home-student/courses" element={<LearnerCourses />} />
             <Route path="/home-admin" element={<AdminHome />} />
             <Route path="/home-instructor" element={<InstructorHome />} />
             <Route path="/home-instructor/courses" element={<InstructorCourses />} />
             <Route path="/home-instructor/courses/:id" element={<InstructorCourseDetailPage />} />
-            <Route path="/enrolled" element={<EnrolledCoursesPage />} />
             <Route path="/CourseDetails" element={<CourseDetailsPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/progress" element={<CourseProgressTrackerPage />} />

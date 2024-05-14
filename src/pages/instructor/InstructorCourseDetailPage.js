@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Grid, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar } from '@mui/material';
+import { Container, TextField, Button, Grid, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, CircularProgress } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront';
 import useFetchCourseDetail from '../../hooks/useInstructorCourses/useFetchCourseDetail';
@@ -11,6 +11,7 @@ import AppAppBarInstruct from '../../components/common/AppAppBarInstruct';
 
 const InstructorCourseDetailPage = () => {
     useAuth();
+    const [loading, setLoading] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
     const instructorId = localStorage.getItem('instructorId');
@@ -34,6 +35,8 @@ const InstructorCourseDetailPage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        setLoading(true);
+
         let videoUrl = '';
         if (videoFile) {
             videoUrl = await uploadToS3(videoFile);
@@ -51,6 +54,8 @@ const InstructorCourseDetailPage = () => {
 
         await updateCourse(id, courseData);
         setOpen(true);
+
+        setLoading(false);
     };
 
     const handleClose = () => {
@@ -116,8 +121,8 @@ const InstructorCourseDetailPage = () => {
                                 />
                             </Grid>
                             <Grid item container justify="center">
-                                <Button variant="contained" color="primary" type="submit" width="50%">
-                                    Submit All
+                                <Button variant="contained" color="primary" type="submit" width="50%" disabled={loading}>
+                                    {loading ? <CircularProgress size={24} /> : 'Submit All'}
                                 </Button>
                             </Grid>
                         </Grid>

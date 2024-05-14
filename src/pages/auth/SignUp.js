@@ -42,6 +42,7 @@ function Copyright(props) {
 export default function SignUp() {
     useAuthRedirect();
     const [role, setRole] = React.useState('');
+    const [mobile, setMobile] = React.useState('');
     const { open, setOpen, executeCmsUserRegister, executeLearnerRegister } = useUserRegistration(null);
 
 
@@ -62,6 +63,7 @@ export default function SignUp() {
             body = { ...body, role: role.toLowerCase() };
             executeCmsUserRegister(body);
         } else if (role === 'Learner') {
+            body = { ...body, mobile };
             executeLearnerRegister(body);
         }
     };
@@ -69,7 +71,7 @@ export default function SignUp() {
     const handleClose = () => {
         setOpen(false);
         window.location.href = '/';
-      };
+    };
 
 
     return (
@@ -152,6 +154,20 @@ export default function SignUp() {
                                 autoComplete="new-password"
                             />
                         </Grid>
+                        {role === 'Learner' && (
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="mobile"
+                                    label="Mobile Number"
+                                    name="mobile"
+                                    autoComplete="mobile"
+                                    value={mobile}
+                                    onChange={event => setMobile(event.target.value)}
+                                />
+                            </Grid>
+                        )}
                         <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox value="allowExtraEmails" color="primary" />}

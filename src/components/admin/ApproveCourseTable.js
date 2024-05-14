@@ -72,7 +72,7 @@ const ApproveCourseTable = () => {
                   </TableCell>
                   <TableCell>{course.title}</TableCell>
                   <TableCell>{course.content}</TableCell>
-                  <TableCell>{course.instructor}</TableCell>
+                  <TableCell>{course.instructor.username}</TableCell>
                   <TableCell>
                     <Chip
                       label={course.approved ? 'Approved' : 'Not Approved'}

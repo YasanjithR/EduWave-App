@@ -26,12 +26,14 @@ const useUserLogin = (username, password, role) => {
         localStorage.setItem('email', response.data.email);
         localStorage.setItem('role', response.data.role);
         localStorage.setItem('id', response.data._id);
+        localStorage.setItem('mobile', response.data.mobile);
 
         setTimeout(() => {
           localStorage.removeItem('token');
           localStorage.removeItem('email');
           localStorage.removeItem('role');
           localStorage.removeItem('id');
+          localStorage.removeItem('mobile');
         }, 24 * 60 * 60 * 1000);
       }
     } catch (err) {
