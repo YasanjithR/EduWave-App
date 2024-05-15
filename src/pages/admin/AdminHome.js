@@ -9,7 +9,7 @@ const AdminHome = () => {
       <AppAppBar />
       <div className="flex-1 mx-3">
 
-        <ApproveCourseTable />
+        <ApproveCourseTable status="all"/>
       </div>
 
 
