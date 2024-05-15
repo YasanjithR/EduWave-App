@@ -2,6 +2,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LearnerHome from "./pages/learner/LearnerHome";
 import LearnerCourses from "./pages/learner/LearnerCourses";
+import LearnerProfile from './pages/learner/LearnerProfile';
 import AdminHome from "./pages/admin/AdminHome";
 import AdminApproved from "./pages/admin/AdminApproved";
 import AdminNotApproved from "./pages/admin/AdminNotApproved";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/home-student" element={<LearnerHome />} />
             <Route path="/home-student/courses" element={<LearnerCourses />} />
+            <Route path="/home-student/profile" element={<LearnerProfile />} />
             <Route path="/home-admin" element={<AdminHome />} />
             <Route path="/approved-admin" element={<AdminApproved />} />
             <Route path="/not-approved-admin" element={<AdminNotApproved />} />
@@ -36,6 +38,8 @@ function App() {
               path="/home-instructor/courses/:id"
               element={<InstructorCourseDetailPage />}
             />
+
+
             <Route path="/CourseDetails" element={<CourseDetailsPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/progress" element={<CourseProgressTrackerPage />} />

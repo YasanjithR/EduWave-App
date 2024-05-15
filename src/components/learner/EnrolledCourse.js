@@ -53,13 +53,24 @@ const EnrolledCourses = ({ course }) => {
                 </Button>
             </CardContent>
             <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
-                <DialogContent>
+                <DialogContent sx={{ position: 'relative' }}>
                     {course.videos.length > 0 ? (
                         <>
                             <ReactPlayer url={course.videos[currentVideoIndex].url} controls={true} width='100%' height='100%' />
+                            {course.notes && course.notes.length > 0 && (
+                                <>
+                                    <Typography variant="h6" sx={{ mt: 2 }}>
+                                        {course.notes[currentVideoIndex].title}
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        {course.notes[currentVideoIndex].content}
+                                    </Typography>
+                                </>
+                            )}
                             {currentVideoIndex < course.videos.length - 1 && (
-                                <IconButton onClick={handleNextVideo}>
+                                <IconButton onClick={handleNextVideo} sx={{ position: 'absolute', bottom: '1px', right: '1px', color: 'green' }}>
                                     <ArrowForwardIos />
+                                    <Typography variant="button">Next</Typography>
                                 </IconButton>
                             )}
                         </>
