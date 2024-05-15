@@ -9,7 +9,7 @@ function useSmsNotification() {
         if (mobile.startsWith('0')) {
             mobile = '94' + mobile.slice(1);
         }
-        await axios.post(`${API_BASE_URL}/notification/sms/sms`, { to: mobile });
+        await axios.post(`${API_BASE_URL}/notification/sms/sms`, { mobile: mobile });
     }, []);
 
     return sendSmsNotification;

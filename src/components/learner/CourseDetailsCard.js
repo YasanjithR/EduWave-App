@@ -14,11 +14,15 @@ const CourseDetailsCard = ({ course }) => {
   const sendSmsNotification = useSmsNotification();
 
   const handleEnroll = async () => {
-    const data = await enroll(course._id);
-    if (data) {
-      setOpen(true);
-      await sendEmailNotification();
-      // await sendSmsNotification();
+    if (course.price > 0) {
+      navigate('/stripe-checkout', { state: { price: course.price } });
+    } else {
+      const data = await enroll(course._id);
+      if (data) {
+        setOpen(true);
+        await sendEmailNotification();
+        await sendSmsNotification();
+      }
     }
   };
 
@@ -30,7 +34,7 @@ const CourseDetailsCard = ({ course }) => {
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', mb: 2, width: '100%', height: 'auto' }}>
       <Grid container alignItems="center">
-        <Grid item xs={4}>
+        <Grid item xs={4}>]
           <CardMedia
             component="img"
             sx={{ width: 300, marginLeft: 3, borderRadius: 2 }}
@@ -52,7 +56,7 @@ const CourseDetailsCard = ({ course }) => {
           <Typography variant="h6" sx={{ mb: 2 }}>
             {course.price > 0 ? `$${course.price} USD` : 'Free'}
           </Typography>
-          <Button variant="contained" color="primary" onClick={handleEnroll} disabled={loading || course.price > 0}>
+          <Button variant="contained" color="primary" onClick={handleEnroll} disabled={loading}>
             {course.price > 0 ? 'Buy' : 'Enroll'}
           </Button>
           <Dialog open={open} onClose={handleClose}>

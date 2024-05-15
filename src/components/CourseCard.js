@@ -29,17 +29,23 @@ const CourseCard = ({ course }) => {
         </Typography>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Videos:</Typography>
+            <Typography variant="body1" paragraph>Videos:</Typography>
             {course.videos.map((video, index) => (
-              <Typography paragraph key={index}>{video.title}</Typography>
+              <>
+                <Typography paragraph key={`${index}-title`} variant="caption">{index + 1}. {video.title}</Typography>
+              </>
             ))}
-            <Typography paragraph>Notes:</Typography>
+            <Typography variant="body1" paragraph>Notes:</Typography>
             {course.notes.map((note, index) => (
-              <Typography paragraph key={index}>{note.title}</Typography>
+              <>
+                <Typography paragraph key={`${index}-title`} variant="caption">{index + 1}. {note.title}</Typography>
+              </>
             ))}
-            <Typography paragraph>Quizzes:</Typography>
+            <Typography variant="body1" paragraph>Quizzes:</Typography>
             {course.quizzes.map((quiz, index) => (
-              <Typography paragraph key={index}>{quiz.question}</Typography>
+              <>
+                <Typography paragraph key={`${index}-title`} variant="caption">{index + 1}. {quiz.question}</Typography>
+              </>
             ))}
           </CardContent>
         </Collapse>
