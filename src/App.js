@@ -3,17 +3,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LearnerHome from "./pages/learner/LearnerHome";
 import LearnerCourses from "./pages/learner/LearnerCourses";
 import LearnerProfile from './pages/learner/LearnerProfile';
-import AdminHome from "./pages/admin/AdminHome";
+import AdminHome from './pages/admin/AdminHome';
+import InstructorHome from './pages/instructor/InstructorHome';
+import InstructorCourses from './pages/instructor/InstructorCourses';
 import AdminApproved from "./pages/admin/AdminApproved";
 import AdminNotApproved from "./pages/admin/AdminNotApproved";
-import InstructorHome from "./pages/instructor/InstructorHome";
-import InstructorCourses from "./pages/instructor/InstructorCourses";
-import InstructorCourseDetailPage from "./pages/instructor/InstructorCourseDetailPage";
-import CourseDetailsPage from "./pages/CourseDetailsPage";
-import PaymentPage from "./pages/PaymentPage";
-import CourseProgressTrackerPage from "./pages/ProgressPage";
-import SignIn from "./pages/auth/SignIn";
-import SignUp from "./pages/auth/SignUp";
+import InstructorCourseDetailPage from './pages/instructor/InstructorCourseDetailPage';
+import StripeCheckout from './components/payment/StripeCheckout';
+import CourseDetailsPage from './pages/CourseDetailsPage';
+import PaymentPage from './pages/PaymentPage';
+import CourseProgressTrackerPage from './pages/ProgressPage';
+import SignIn from './pages/auth/SignIn';
+import SignUp from './pages/auth/SignUp';
 
 function App() {
   return (
@@ -30,16 +31,9 @@ function App() {
             <Route path="/approved-admin" element={<AdminApproved />} />
             <Route path="/not-approved-admin" element={<AdminNotApproved />} />
             <Route path="/home-instructor" element={<InstructorHome />} />
-            <Route
-              path="/home-instructor/courses"
-              element={<InstructorCourses />}
-            />
-            <Route
-              path="/home-instructor/courses/:id"
-              element={<InstructorCourseDetailPage />}
-            />
-
-
+            <Route path="/home-instructor/courses" element={<InstructorCourses />} />
+            <Route path="/home-instructor/courses/:id" element={<InstructorCourseDetailPage />} />
+            <Route path="/stripe-checkout" element={<StripeCheckout/>} />
             <Route path="/CourseDetails" element={<CourseDetailsPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/progress" element={<CourseProgressTrackerPage />} />
